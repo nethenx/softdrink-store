@@ -3,7 +3,7 @@
 // ================================================================
 // Replace these with your actual Sanity project values.
 // See SETUP.md for instructions on how to get these.
-const SANITY_PROJECT_ID = 'YOUR_PROJECT_ID';  // e.g. 'abc123xy'
+const SANITY_PROJECT_ID = 'q7dso99v';
 const SANITY_DATASET = 'production';
 
 // Sanity CDN API base URL
@@ -68,7 +68,7 @@ async function renderHomepage() {
       </div>
       <div class="card-body">
         <h3>${product.name}</h3>
-        <span class="card-price">$${Number(product.price).toFixed(2)}</span>
+        <span class="card-price">${Number(product.price).toFixed(2)} ETB</span>
       </div>
     </a>
   `).join('');
@@ -100,11 +100,35 @@ async function renderProductDetail() {
     <img class="detail-img" src="${sanityImageUrl(product.image)}" alt="${product.name}">
     <div class="detail-info">
       <h1>${product.name}</h1>
-      <span class="detail-price">$${Number(product.price).toFixed(2)}</span>
+      <span class="detail-price">${Number(product.price).toFixed(2)} ETB</span>
       <p class="detail-desc">${product.description || 'No description available.'}</p>
-      <a href="confirm.html?id=${product._id}" class="btn btn-primary" id="buy-btn">Buy Now</a>
+      <button class="btn btn-primary" id="buy-btn">Buy Now</button>
+      <div id="payment-info" style="display:none;">
+        <div class="payment-box">
+          <h3>Send Payment To:</h3>
+          <div class="payment-method">
+            <strong>🏦 Commercial Bank of Ethiopia (CBE)</strong><br>
+            Account: <strong>1000540249486</strong><br>
+            Name: <strong>Mekdes Paulos</strong>
+          </div>
+          <div class="payment-method" style="margin-top:0.75rem;">
+            <strong>📱 Telebirr</strong><br>
+            Phone: <strong>0972770206</strong><br>
+            Name: <strong>Phawulos</strong>
+          </div>
+          <p style="margin-top:1rem; color:var(--text-secondary); font-size:0.9rem;">
+            Send <strong>${Number(product.price).toFixed(2)} ETB</strong> then click the button below to confirm.
+          </p>
+          <a href="confirm.html?id=${product._id}" class="btn btn-primary" style="margin-top:1rem; width:100%;">I've Paid — Confirm Payment</a>
+        </div>
+      </div>
     </div>
   `;
+
+  document.getElementById('buy-btn').addEventListener('click', function() {
+    this.style.display = 'none';
+    document.getElementById('payment-info').style.display = 'block';
+  });
 }
 
 // ================================================================
@@ -123,7 +147,7 @@ async function renderConfirmPage() {
   if (!product) return;
 
   document.getElementById('product-name').value = product.name;
-  document.getElementById('product-price').value = `$${Number(product.price).toFixed(2)}`;
+  document.getElementById('product-price').value = `${Number(product.price).toFixed(2)} ETB`;
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -134,7 +158,7 @@ async function renderConfirmPage() {
     const order = {
       orderNumber: orderNumber,
       productName: product.name,
-      amount: `$${Number(product.price).toFixed(2)}`,
+      amount: `${Number(product.price).toFixed(2)} ETB`,
       time: now.toLocaleString(),
       customerName: document.getElementById('customer-name').value,
       customerPhone: document.getElementById('customer-phone').value

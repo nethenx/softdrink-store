@@ -223,6 +223,36 @@ img {
   line-height: 1.7;
 }
 
+/* ===== PAYMENT INFO BOX ===== */
+.payment-box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.payment-box h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.payment-method {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.payment-method strong {
+  color: var(--text-primary);
+}
+
 /* ===== BUTTONS ===== */
 .btn {
   display: inline-flex;
