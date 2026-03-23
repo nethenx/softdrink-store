@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Confirm your payment — Ecom Soft Drinks Store">
+  <title>Confirm Payment — Ecom</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">Ecom</a>
+      <a href="index.html" class="nav-link">← Back to Shop</a>
+    </div>
+  </nav>
+
+  <div class="form-container">
+    <h1>Confirm Payment</h1>
+    <p class="form-subtitle">Fill in your details and upload your payment screenshot.</p>
+
+    <form id="confirm-form" class="form-card">
+      <div class="form-group">
+        <label for="customer-name">Your Name</label>
+        <input type="text" id="customer-name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="customer-phone">Phone Number</label>
+        <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="product-name">Product Name</label>
+        <input type="text" id="product-name" readonly>
+      </div>
+
+      <div class="form-group">
+        <label for="product-price">Price</label>
+        <input type="text" id="product-price" readonly>
+      </div>
+
+      <div class="form-group">
+        <label for="payment-screenshot">Payment Screenshot</label>
+        <input type="file" id="payment-screenshot" accept="image/*" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Submit Payment</button>
+      </div>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Ecom. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
